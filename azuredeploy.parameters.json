@@ -3,16 +3,16 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"_artifactsLocation": {
-			"value": "https://raw.githubusercontent.com/Microsoft/openshift-origin/release-3.9"
+			"value": "https://raw.githubusercontent.com/ccuz/openshift-origin/bugfix/release-3.9-bugfixes"
 		},
 		"masterVmSize": {
 			"value": "Standard_D4s_v3"
 		},
 		"infraVmSize": {
-			"value": "Standard_D4s_v3"
+			"value": "Standard_DS2_v2"
 		},
 		"nodeVmSize": {
-			"value": "Standard_D4s_v3"
+			"value": "Standard_D2s_v3"
 		},
 		"storageKind": {
 			"value": "managed"
@@ -21,16 +21,16 @@
 			"value": "changeme"
 		},
 		"masterInstanceCount": {
-			"value": 3
+			"value": 1
 		},
 		"infraInstanceCount": {
-			"value": 3
+			"value": 1
 		},
 		"nodeInstanceCount": {
-			"value": 3
+			"value": 1
 		},
 		"dataDiskSize": {
-			"value": 128
+			"value": 64
 		},
 		"adminUsername": {
 			"value": "changeme"
@@ -45,31 +45,31 @@
 			"value": "false"
 		},
 		"sshPublicKey": {
-			"value": "changeme"
+			"value": "changeme" # SSH public key matching what you put in the keyvault
 		},
 		"keyVaultResourceGroup": {
-			"value": "changeme"
+			"value": "KeyvaultRG"
 		},
 		"keyVaultName": {
-			"value": "changeme"
+			"value": "changeme" # Add the name of your Key Vault here
 		},
 		"keyVaultSecret": {
-			"value": "changeme"
+			"value": "changeme" # Add the name of your Key Vault Secret here
 		},
 		"enableAzure": {
 			"value": "true"
 		},
 		"aadClientId": {
-			"value": "changeme"
+			"value": "changeme" # Add the AppId you saved earlier
 		},
 		"aadClientSecret": {
-			"value": "changeme"
+			"value": "changeme" # Add the password for your Service Principal
 		},
 		"defaultSubDomainType": {
 			"value": "nipio"
 		},
 		"defaultSubDomain": {
-			"value": "changeme"
+			"value": "changeme" # If you selected nipio above, this will be ignored
 		}
 	}
 }
