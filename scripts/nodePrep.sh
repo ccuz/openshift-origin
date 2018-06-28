@@ -45,16 +45,21 @@ fi
 echo $(date) " - Installing Docker 1.13.x"
 
 #yum -y install docker
-yum -y remove docker docker-common container-selinux
-yum -y remove docker-selinux
-yum -y install  yum-utils
-yum-config-manager --add-repo https://docs.docker.com/v1.13/engine/installation/linux/repo_files/centos/docker.repo
+#yum -y remove docker docker-common container-selinux docker-selinux docker-engine
+yum -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate \
+                  docker-logrotate docker-selinux docker-engine-selinux docker-engine
+#yum -y install  yum-utils
+yum -y install yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+#yum-config-manager --add-repo https://docs.docker.com/v1.13/engine/installation/linux/repo_files/centos/docker.repo
 yum-config-manager --disable docker-testing
+yum-config-manager --disable docker-ce-edge
+#yum -y --enablerepo=rhui-REGION-rhel-server-extras install container-selinux
 yum makecache fast
-yum -y install docker-engine
-yum list docker-engine.x86_64  --showduplicates |sort -r
+yum -y install docker-ce
+#yum list docker-engine.x86_64  --showduplicates |sort -r
 #yum -y install docker-engine-1.13.1-1.el7.centos
-yum -y install docker-engine-1.13.1-1.el7
+#yum -y install docker-engine-1.13.1-1.el7
 sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
 
 echo $(date) " - Docker installed successfully"
